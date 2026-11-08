@@ -1,0 +1,100 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@import "./liquid-glass.css";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --color-ink-950: #001a4d;
+  --color-ink-900: #0057ff;
+  --color-ink-800: #1a68ff;
+  --color-ink-700: #3378ff;
+  --color-ink-600: #4d89ff;
+  --color-ink-500: #669aff;
+  --color-ink-300: #a6c4ff;
+  --color-ink-100: #dbe7ff;
+  --color-ink-50: #eff4ff;
+
+  --color-champagne: #f8f7f4;
+  --color-champagne-soft: #fcfbf9;
+  --color-champagne-deep: #e6e3dc;
+
+  --color-paper: #fbfaf8;
+  --color-line: #e7e4dd;
+  --color-body: #14161c;
+  --color-muted: #5f6470;
+  --color-blocked: #a32e22;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-body);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-champagne-deep) transparent;
+  }
+}
+
+/* Markdown answers follow the theme's text colours. */
+.prose {
+  --tw-prose-body: var(--color-body);
+  --tw-prose-headings: var(--color-ink-900);
+  --tw-prose-bold: var(--color-ink-900);
+  --tw-prose-links: var(--color-ink-600);
+  --tw-prose-code: var(--color-ink-900);
+  --tw-prose-bullets: var(--color-muted);
+  --tw-prose-counters: var(--color-muted);
+  --tw-prose-quotes: var(--color-body);
+  --tw-prose-quote-borders: var(--color-line);
+  --tw-prose-hr: var(--color-line);
+  --tw-prose-th-borders: var(--color-line);
+  --tw-prose-td-borders: var(--color-line);
+  --tw-prose-pre-bg: rgb(0 26 77 / 0.92);
+  --tw-prose-pre-code: #f8f7f4;
+}
+
+.fade-in {
+  animation: fade-in 0.28s ease-out both;
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.typing-dot {
+  animation: typing 1.2s infinite ease-in-out;
+}
+.typing-dot:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.typing-dot:nth-child(3) {
+  animation-delay: 0.3s;
+}
+@keyframes typing {
+  0%,
+  60%,
+  100% {
+    opacity: 0.25;
+    transform: translateY(0);
+  }
+  30% {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+}
+
+/* Inline code without the typography plugin's literal backticks. */
+.prose :where(code):not(:where(pre *))::before,
+.prose :where(code):not(:where(pre *))::after {
+  content: none;
+}

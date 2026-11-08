@@ -1,0 +1,13 @@
+# Secrets — the OpenAI key lives here and must never be pushed.
+.env
+
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# Node
+node_modules/
+dist/
+
+.DS_Store
